@@ -2,7 +2,18 @@ package ATM;
 
 public class Transaction {
 
-    private double balance = 10000;
+    private double balance = 0;
+    private String number = "123456789123456";
+
+
+    public boolean validator(String number) {
+        if (this.number.equals(number))
+            return true;
+        else {
+            System.out.println("The card number is incorrect, please re-enter it again.");
+            return false;
+        }
+    }
 
     public void withdrawal(double amount) {
 	if (amount <= this.balance && amount >= 0)
