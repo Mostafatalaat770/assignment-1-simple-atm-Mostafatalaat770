@@ -11,7 +11,6 @@ import javafx.stage.Stage;
 
 
 public class Main extends Application {
-    private String inputString = "";
     private int historyIndicator = 0;
     private int type = 0;
 
@@ -44,7 +43,7 @@ public class Main extends Application {
         Label transactionLabel = new Label();
         Button mainMenu = new Button("Main menu");
         Label inputLabel = new Label();
-        Label input = new Label();
+        Label input = new Label("");
         Button submit = new Button("Submit");
         Button clear = new Button("Clear");
         Label errorMessage = new Label();
@@ -165,89 +164,57 @@ public class Main extends Application {
         clear.setFont(new Font("Segoe UI Semibold", 12));
         clear.setMaxSize(100, 100);
         errorMessage.setFont(new Font("Segoe UI Semibold", 11));
+        input.setMaxWidth(90);
 
         Scene withdrawalScene = new Scene(gridTransaction);
 
         // Actions
         keypad0.setOnAction(actionEvent -> {
-            if(!inputString.isEmpty()){
-            if (inputString.length() <= 4 && type != 0)
-                inputString += "0";
-            if (type == 0)
-                inputString += "0";
-            input.setText(inputString);}
+            if(!input.getText().isEmpty()){
+                input.setText(input.getText()+"0");
+            }
         });
         keypad1.setOnAction(actionEvent -> {
-            if (inputString.length() <= 4 && type != 0)
-                inputString += "1";
-            if (type == 0)
-                inputString += "1";
-            input.setText(inputString);
+            input.setText(input.getText()+"1");
+
         });
         keypad2.setOnAction(actionEvent -> {
-            if (inputString.length() <= 4 && type != 0)
-                inputString += "2";
-            if (type == 0)
-                inputString += "2";
-            input.setText(inputString);
+            input.setText(input.getText()+"2");
+
         });
         keypad3.setOnAction(actionEvent -> {
-            if (inputString.length() <= 4 && type != 0)
-                inputString += "3";
-            if (type == 0)
-                inputString += "3";
-            input.setText(inputString);
+            input.setText(input.getText()+"3");
+
         });
         keypad4.setOnAction(actionEvent -> {
-            if (inputString.length() <= 4 && type != 0)
-                inputString += "4";
-            if (type == 0)
-                inputString += "4";
-            input.setText(inputString);
+            input.setText(input.getText()+"4");
+
         });
         keypad5.setOnAction(actionEvent -> {
-            if (inputString.length() <= 4 && type != 0)
-                inputString += "5";
-            if (type == 0)
-                inputString += "5";
-            input.setText(inputString);
+            input.setText(input.getText()+"5");
+
         });
         keypad6.setOnAction(actionEvent -> {
-            if (inputString.length() <= 4 && type != 0)
-                inputString += "6";
-            if (type == 0)
-                inputString += "6";
-            input.setText(inputString);
+            input.setText(input.getText()+"6");
+
         });
         keypad7.setOnAction(actionEvent -> {
-            if (inputString.length() <= 4 && type != 0)
-                inputString += "7";
-            if (type == 0)
-                inputString += "7";
-            input.setText(inputString);
+            input.setText(input.getText()+"7");
+
         });
         keypad8.setOnAction(actionEvent -> {
-            if (inputString.length() <= 4 && type != 0)
-                inputString += "8";
-            if (type == 0)
-                inputString += "8";
+            input.setText(input.getText()+"8");
 
-            input.setText(inputString);
         });
         keypad9.setOnAction(actionEvent -> {
-            if (inputString.length() <= 4 && type != 0)
-                inputString += "9";
-            if (type == 0)
-                inputString += "9";
-            input.setText(inputString);
+            input.setText(input.getText()+"9");
+
         });
         clear.setOnAction(actionEvent -> {
-            inputString = "";
             input.setText("");
         });
         mainMenu.setOnAction(actionEvent -> {
             primaryStage.setScene(mainScene);
-            inputString = "";
             input.setText("");
         });
         withdrawal.setOnAction(actionEvent -> {
@@ -269,10 +236,10 @@ public class Main extends Application {
             primaryStage.setScene(withdrawalScene);
         });
         submit.setOnAction(actionEvent -> {
-            double amount = main.stringToNumber(inputString);
+            double amount = main.stringToNumber(input.getText());
             if (type == 0) {
 
-                if (main.validator(inputString)) {
+                if (main.validator(input.getText())) {
                     primaryStage.setScene(mainScene);
                 } else {
                     errorMessage.setText("The card number is incorrect.");
@@ -301,11 +268,10 @@ public class Main extends Application {
                 }
 
 
-            if (type != 0 && !inputString.isEmpty()) {
+            if (type != 0 && !input.getText().isEmpty()) {
                 primaryStage.setScene(mainScene);
                 historyIndicator= history.size();
             }
-            inputString = "";
             input.setText("");
         });
 
