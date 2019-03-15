@@ -164,7 +164,7 @@ public class Main extends Application {
         mainMenu.setFont(new Font("Segoe UI Semibold", 12));
         clear.setFont(new Font("Segoe UI Semibold", 12));
         clear.setMaxSize(100, 100);
-        errorMessage.setFont(new Font("Segoe UI Semibold", 12));
+        errorMessage.setFont(new Font("Segoe UI Semibold", 11));
 
         Scene withdrawalScene = new Scene(gridTransaction);
 
@@ -287,7 +287,7 @@ public class Main extends Application {
                         history.delete();
                     }
                 } else {
-                    status.setText("Withdrawal amount is greater than the current balance.");
+                    status.setText("Insufficient funds.");
                 }
             } else if (type == 2) {
         		main.deposit(amount);
