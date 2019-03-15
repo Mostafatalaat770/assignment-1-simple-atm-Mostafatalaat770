@@ -23,7 +23,9 @@ public class Transactions {
 
     public boolean withdrawal(double amount) {
         if (amount <= balance) {
-            balance -= amount;}
+            balance -= amount;
+            amount=0; // To return true if possible. thus, making the code more efficient
+        }
             return (amount <= balance);
     }
     public void deposit(double amount) {
